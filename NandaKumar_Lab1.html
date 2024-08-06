@@ -1,0 +1,63 @@
+<html>
+	<head>
+	<title>NandaKumar_Lab1</title>
+	<script language="JavaScript", type="text/JavaScript">
+	
+	// Creating a function that calculates the due amount to be paid after interest.
+	
+	function calculate(){
+	
+		// Obtaining the name and account balance from the HTML Form utilizing getElementById. 
+		
+		var amt = parseFloat(document.getElementById("box5").value);
+		var name = document.getElementById("box1").value;
+		
+		// Checking if the entered amount is negative. i.e, entered incorrectly
+		if (amt<0){
+		document.getElementById("result_2").innerHTML = "Please enter a positive number "+ name +", *we dont owe you* XD"
+		}
+		
+		// In case the due is paid, we thank the user.
+		else if(amt == 0){
+		document.getElementById("result_2").innerHTML = "Thank you for your payment "+ name +"!"
+		}
+		
+		// Applying an interest of 20% if there's any due to be paid < $2000
+		else if(amt>0 && amt<2000){
+		amt += (amt*0.02);
+		}
+		
+		// Charging 30% if higher than or equal to $2000.
+		else{
+		amt += (amt*0.03);
+		}
+		
+		// Updating 'div' tag to print the owed amount
+		document.getElementById("result").innerHTML = "Total Owing = $" + amt;
+		}
+		
+	</script>
+	</head>
+	<body style="background-color:#FFDAB9">
+	<div>Full Name</div>
+	<input type="text", id="box1", class="TextBoxes", value="Sherlock Holmes">
+	<br>
+	<div>Address</div>
+	<input type="text", id="box2", class="TextBoxes", value="221 B Baker Street">
+	<br>
+	<div>City</div>
+	<input type="text", id="box3", class="TextBoxes", value="London">
+	<br>
+	<div>Province</div>
+	<input type="text", id="box4", class="TextBoxes", value="Ontario">
+	<br>
+	<div>Account Balance</div>
+	<input type="text", id="box5", class="TextBoxes", value="1000">
+	<br><br><br>
+	<input value= "Calculate Owed Amount", type="button", style= "background-color:pink" id="button1", class="Buttons", onclick=calculate()>
+	<br><br>
+	<div id="result"></div>
+	<br><br>
+	<div id="result_2"></div>
+	</body>
+</html>
